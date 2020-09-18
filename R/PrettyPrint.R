@@ -28,7 +28,7 @@
 #' A character vector containing the markdown.
 #' 
 #' @export
-rendePrintFriendly <- function(expression) {
+renderPrintFriendly <- function(expression) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   
   # expression can be a org.ohdsi.circe.cohortdefinition.CohortExpression or a String (it’s an overload method):
