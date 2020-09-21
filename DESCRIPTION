@@ -1,6 +1,6 @@
 Package: CirceR
 Type: Package
-Title: An R Wrapper for CIRCE.
+Title: An R Wrapper for CIRCE
 Version: 0.0.1
 Date: 2020-011-17
 Authors@R: c(

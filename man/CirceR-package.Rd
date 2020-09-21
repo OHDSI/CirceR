@@ -4,7 +4,7 @@
 \name{CirceR-package}
 \alias{CirceR}
 \alias{CirceR-package}
-\title{CirceR: An R Wrapper for CIRCE.}
+\title{CirceR: An R Wrapper for CIRCE}
 \description{
 An R wrapper around the CIRCE Java library, allowing cohort definition expressions to be edited, and converted to JSON or SQL.
 }
