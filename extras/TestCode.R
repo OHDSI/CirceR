@@ -2,5 +2,5 @@
 
 cohort <- ROhdsiWebApi::getCohortDefinition(cohortId = 18390, baseUrl = keyring::key_get("baseUrl"))
 expression <- RJSONIO::toJSON(cohort$expression)
-markdown <- renderPrintFriendly(expression)
+markdown <- CirceR::cohortPrintFriendly(expression)
 writeLines(markdown)

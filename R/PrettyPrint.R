@@ -16,23 +16,64 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Render print-friendly
+#' Render cohort print-friendly
 #' 
 #' @description 
 #' Generates a print-friendly (human-readable) representation of the cohort definition. This can for example 
 #' be used in a study protocol.
 #'
-#' @param expression  A character vector containing the cohort expression.
+#' @param expression  A character vector or result of cohortExpressionFromJson containing the cohort expression.
 #'
 #' @return 
 #' A character vector containing the markdown.
 #' 
 #' @export
-renderPrintFriendly <- function(expression) {
+cohortPrintFriendly <- function(expression) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   
   # expression can be a org.ohdsi.circe.cohortdefinition.CohortExpression or a String (it’s an overload method):
-  markdown <- renderer$generate(expression)
+  markdown <- renderer$renderCohort(expression)
 
   return(markdown)
 }
+
+#' Render conceptSet array for print-friendly
+#' 
+#' @description 
+#' Generates a print-friendly (human-readable) representation of an array of concept sets. This can for example 
+#' be used in a study protocol.
+#'
+#' @param conceptSetList  A ConceptSet[] (from cohortExpression.conceptSets)
+#'
+#' @return 
+#' A character vector containing the markdown.
+#' 
+#' @export
+conceptSetListPrintFriendly <- function(conceptSetList) {
+  renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
+  
+  markdown <- renderer$renderConceptSetList(rJava::.jarray(conceptSetList, contents.class="org.ohdsi.circe.cohortdefinition.ConceptSet"))
+  
+  return(markdown)
+}
+
+#' Render conceptSet array for print-friendly
+#' 
+#' @description 
+#' Generates a print-friendly (human-readable) representation of a single concept set. This can for example 
+#' be used in a study protocol.
+#'
+#' @param conceptSett  A ConceptSet (from cohortExpression.conceptSets[i])
+#'
+#' @return 
+#' A character vector containing the markdown.
+#' 
+#' @export
+conceptSetPrintFriendly <- function(conceptSet) {
+  renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
+  
+  markdown <- renderer$renderConceptSet(conceptSet)
+  
+  return(markdown)
+}
+
