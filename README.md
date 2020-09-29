@@ -3,7 +3,7 @@ Circe-R
 
 Introduction
 ============
-A R-wrapper for [Circe](https://www.github.com/OHDSI/circe-be).  This package provides convienent wrappers for Circe functions, and includes the necessary Java dependencies.
+A R-wrapper for [Circe](https://www.github.com/OHDSI/circe-be).  This package provides convenient wrappers for Circe functions, and includes the necessary Java dependencies.
 
 System Requirements
 ===================
