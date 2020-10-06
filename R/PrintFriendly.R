@@ -1,4 +1,4 @@
-# @file PrettyPrint.R
+# @file PrintFriendly.R
 #
 # Copyright 2020 Observational Health Data Sciences and Informatics
 #
@@ -63,7 +63,7 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
 #' Generates a print-friendly (human-readable) representation of a single concept set. This can for example 
 #' be used in a study protocol.
 #'
-#' @param conceptSett  A ConceptSet (from cohortExpression.conceptSets[i])
+#' @param conceptSet  A ConceptSet (from cohortExpression.conceptSets[i])
 #'
 #' @return 
 #' A character vector containing the markdown.

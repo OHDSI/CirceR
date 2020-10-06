@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Chris Knoll \email{chris@somewhere.com}
+\strong{Maintainer}: Chris Knoll \email{cknoll@ohdsi.org}
 
 Authors:
 \itemize{
