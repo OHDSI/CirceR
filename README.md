@@ -20,6 +20,11 @@ install.packages("drat")
 drat::addRepo("OHDSI")
 install.packages("CirceR")
 ```
+or
+```r
+devtools::install_github("OHDSI/CirceR", ref="1.0.0"
+```
+
 
 Building Package
 ===============
