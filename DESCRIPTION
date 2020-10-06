@@ -1,7 +1,7 @@
 Package: CirceR
 Type: Package
 Title: An R Wrapper for CIRCE
-Version: 0.0.1
+Version: 1.0.0
 Date: 2020-011-17
 Authors@R: c(
     person("Chris", "Knoll", , "cknoll@ohdsi.org", role = c("aut", "cre")),
