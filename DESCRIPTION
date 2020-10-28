@@ -14,7 +14,8 @@ VignetteBuilder: knitr
 URL: https://ohdsi.github.io/CirceR, https://github.com/OHDSI/CirceR
 BugReports: https://github.com/OHDSI/CirceR/issues
 Imports:
-    rJava
+    rJava,
+    RJSONIO
 Suggests:
     testthat,
     knitr,

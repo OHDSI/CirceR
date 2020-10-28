@@ -24,10 +24,10 @@
 #' @param expressionJson  A character vector containing the cohort expression.
 #'
 #' @return 
-#' A java instance of org.ohdsi.circe.cohortdefinition.CohortExpression.
+#' A RJSIONIO list representing the JSON structure.
 #' 
 #' @export
 cohortExpressionFromJson <- function(expressionJson) {
   cohortExpressionObj <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpression"))
-  return(cohortExpressionObj$fromJson(expressionJson));
+  return (cohortExpressionObj$fromJson(expressionJson))
 }
