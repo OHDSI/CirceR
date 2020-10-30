@@ -59,9 +59,9 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
     markdown <- renderer$renderConceptSetList(conceptSetList)
   } else if (is.list(conceptSetList)) {
     if (length(conceptSetList) == 0) {
-      markdown <- "";
+      markdown <- ""
     } else if (class(conceptSetList[[1]]) == "jobjRef") { # this is an java array
-      markdown <- renderer$renderConceptSetList(rJava::.jarray(conceptSetList, contents.class="org.ohdsi.circe.cohortdefinition.ConceptSet"))  
+      markdown <- renderer$renderConceptSetList(rJava::.jarray(conceptSetList, contents.class = "org.ohdsi.circe.cohortdefinition.ConceptSet"))  
     } else {
       markdown <- renderer$renderConceptSetList(RJSONIO::toJSON(conceptSetList))
     }

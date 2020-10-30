@@ -29,5 +29,5 @@
 #' @export
 cohortExpressionFromJson <- function(expressionJson) {
   cohortExpressionObj <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpression"))
-  return (cohortExpressionObj$fromJson(expressionJson))
+  return(cohortExpressionObj$fromJson(expressionJson))
 }

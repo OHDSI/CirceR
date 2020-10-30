@@ -35,13 +35,13 @@
 #' @export
 createGenerateOptions <- function(cohortIdFieldName, cohortId, cdmSchema, targetTable, resultSchema, vocabularySchema, generateStats) {
   options <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpressionQueryBuilder$BuildExpressionQueryOptions"))
-  if (!missing(cohortIdFieldName)) options$cohortIdFieldName <- cohortIdFieldName;
-  if (!missing(cohortId)) options$cohortId <- rJava::.jnew("java/lang/Integer", as.integer(cohortId));
-  if (!missing(cdmSchema)) options$cdmSchema <- cdmSchema;
-  if (!missing(targetTable)) options$targetTable <- targetTable;
-  if (!missing(resultSchema)) options$resultSchema <- resultSchema;
-  if (!missing(vocabularySchema)) options$vocabularySchema <- vocabularySchema;
-  if (!missing(generateStats)) options$generateStats <- generateStats;
+  if (!missing(cohortIdFieldName)) options$cohortIdFieldName <- cohortIdFieldName
+  if (!missing(cohortId)) options$cohortId <- rJava::.jnew("java/lang/Integer", as.integer(cohortId))
+  if (!missing(cdmSchema)) options$cdmSchema <- cdmSchema
+  if (!missing(targetTable)) options$targetTable <- targetTable
+  if (!missing(resultSchema)) options$resultSchema <- resultSchema
+  if (!missing(vocabularySchema)) options$vocabularySchema <- vocabularySchema
+  if (!missing(generateStats)) options$generateStats <- generateStats
   return(options)
 }
 
