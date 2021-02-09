@@ -8,7 +8,7 @@ test_that("createOptions can be invoked", {
   # check values in object are set
   expect_equal(1, rJava::.jsimplify(options$cohortId));
   expect_true(rJava::is.jnull(options$cohortIdFieldName))
-
+  
 })
 
 test_that("cohortSql is generated", {
@@ -16,7 +16,7 @@ test_that("cohortSql is generated", {
   cohortExpressionObj <- cohortExpressionFromJson(cohortJson);
   options <- createGenerateOptions(cohortId = 1, cdmSchema = "CDMSchema", targetTable = "cohort", resultSchema = "ResultSchema");
   cohortSql <- buildCohortQuery(cohortExpressionObj, options);
-
+  
   expect_true(nchar(cohortSql, keepNA=TRUE) > 0)
 })
 

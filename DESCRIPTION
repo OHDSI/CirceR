@@ -13,8 +13,11 @@ License: Apache License 2.0
 VignetteBuilder: knitr
 URL: https://ohdsi.github.io/CirceR, https://github.com/OHDSI/CirceR
 BugReports: https://github.com/OHDSI/CirceR/issues
+Depends:
+    R (>= 3.5.0)
 Imports:
-    rJava
+    rJava,
+    RJSONIO
 Suggests:
     testthat,
     knitr,
