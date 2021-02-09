@@ -10,7 +10,7 @@ cohortExpressionFromJson(expressionJson)
 \item{expressionJson}{A character vector containing the cohort expression.}
 }
 \value{
-A RJSIONIO list representing the JSON structure.
+A java instance of org.ohdsi.circe.cohortdefinition.CohortExpression.
 }
 \description{
 Reads a String (json) and deserializes it into a org.ohdsi.circe.cohortdefinition.CohortExpression
