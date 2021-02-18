@@ -1,7 +1,7 @@
 CirceR
 ======
 
-[![Build Status](https://travis-ci.org/OHDSI/CirceR.svg?branch=master)](https://travis-ci.org/OHDSI/CirceR)
+[![Build Status](https://github.com/OHDSI/CirceR/workflows/R-CMD-check/badge.svg)](https://github.com/OHDSI/CirceR/actions?query=workflow%3AR-CMD-check)
 [![codecov.io](https://codecov.io/github/OHDSI/CirceR/coverage.svg?branch=master)](https://codecov.io/github/OHDSI/CirceR?branch=master)
 
 CirceR is part of [HADES](https://ohdsi.github.io/Hades/).
