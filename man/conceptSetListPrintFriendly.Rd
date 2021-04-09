@@ -7,7 +7,7 @@
 conceptSetListPrintFriendly(conceptSetList)
 }
 \arguments{
-\item{conceptSetList}{A ConceptSet[] (from cohortExpression.conceptSets)}
+\item{conceptSetList}{A ConceptSet[] (from cohortExpression.conceptSets), a JSON string, or a list from RJSONIO::fromJson}
 }
 \value{
 A character vector containing the markdown.

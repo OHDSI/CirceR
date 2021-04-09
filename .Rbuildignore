@@ -15,3 +15,6 @@
 ^docs
 ^_pkgdown.yml
 ^nbactions.xml
+.github
+deploy.sh
+compare_versions

@@ -2,7 +2,7 @@ Package: CirceR
 Type: Package
 Title: An R Wrapper for CIRCE
 Version: 1.0.0
-Date: 2020-011-17
+Date: 2021-02-23
 Authors@R: c(
     person("Chris", "Knoll", , "cknoll@ohdsi.org", role = c("aut", "cre")),
     person("Martijn", "Schuemie", role = c("aut"))
@@ -13,8 +13,12 @@ License: Apache License 2.0
 VignetteBuilder: knitr
 URL: https://ohdsi.github.io/CirceR, https://github.com/OHDSI/CirceR
 BugReports: https://github.com/OHDSI/CirceR/issues
+SystemRequirements: Java version 8 or higher (https://www.java.com/)
+Depends:
+    R (>= 3.5.0)
 Imports:
-    rJava
+    rJava,
+    RJSONIO
 Suggests:
     testthat,
     knitr,

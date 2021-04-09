@@ -28,3 +28,15 @@ shell("R CMD Rd2pdf ./ --output=extras/CirceR.pdf")
 
 pkgdown::build_site()
 OhdsiRTools::fixHadesLogo()
+
+# Import JSON objects as data objects in package ---------------------------------
+cohortDefinitionJson <- paste(readLines("extras/simpleCohort.json"), collapse = "\n")
+save(cohortDefinitionJson, file = "data/cohortDefinitionJson.rda", compress = "xz")
+
+conceptSetJson <- paste(readLines("extras/conceptSet.json"), collapse = "\n")
+save(conceptSetJson, file = "data/conceptSetJson.rda", compress = "xz")
+
+conceptSetListJson <- paste(readLines("extras/conceptSetList.json"), collapse = "\n")
+save(conceptSetListJson, file = "data/conceptSetListJson.rda", compress = "xz")
+
+

@@ -30,9 +30,12 @@
 #' @export
 cohortPrintFriendly <- function(expression) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
-  
+  expr <- expression
+  if (is.list(expression)) { # assuming this is a JSON parsed expression in a RJSONIO list 
+    expr <- RJSONIO::toJSON(expression)
+  } 
   # expression can be a org.ohdsi.circe.cohortdefinition.CohortExpression or a String (it’s an overload method):
-  markdown <- renderer$renderCohort(expression)
+  markdown <- renderer$renderCohort(expr)
 
   return(markdown)
 }
@@ -43,7 +46,7 @@ cohortPrintFriendly <- function(expression) {
 #' Generates a print-friendly (human-readable) representation of an array of concept sets. This can for example 
 #' be used in a study protocol.
 #'
-#' @param conceptSetList  A ConceptSet[] (from cohortExpression.conceptSets)
+#' @param conceptSetList  A ConceptSet[] (from cohortExpression.conceptSets), a JSON string, or a list from RJSONIO::fromJson
 #'
 #' @return 
 #' A character vector containing the markdown.
@@ -51,9 +54,21 @@ cohortPrintFriendly <- function(expression) {
 #' @export
 conceptSetListPrintFriendly <- function(conceptSetList) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
-  
-  markdown <- renderer$renderConceptSetList(rJava::.jarray(conceptSetList, contents.class="org.ohdsi.circe.cohortdefinition.ConceptSet"))
-  
+
+  if (is.character(conceptSetList)) {
+    markdown <- renderer$renderConceptSetList(conceptSetList)
+  } else if (is.list(conceptSetList)) {
+    if (length(conceptSetList) == 0) {
+      markdown <- ""
+    } else if (class(conceptSetList[[1]]) == "jobjRef") { # this is an java array
+      markdown <- renderer$renderConceptSetList(rJava::.jarray(conceptSetList, contents.class = "org.ohdsi.circe.cohortdefinition.ConceptSet"))  
+    } else {
+      markdown <- renderer$renderConceptSetList(RJSONIO::toJSON(conceptSetList))
+    }
+  } else {
+    stop("Unable to determine conceptSetList type in conceptSetListPrintFriendly()")
+  }
+
   return(markdown)
 }
 
@@ -63,7 +78,7 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
 #' Generates a print-friendly (human-readable) representation of a single concept set. This can for example 
 #' be used in a study protocol.
 #'
-#' @param conceptSet  A ConceptSet (from cohortExpression.conceptSets[i])
+#' @param conceptSet  A ConceptSet (from cohortExpression.conceptSets[i]), a JSON string, or a list from RJSONIO::fromJson
 #'
 #' @return 
 #' A character vector containing the markdown.
@@ -71,8 +86,12 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
 #' @export
 conceptSetPrintFriendly <- function(conceptSet) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
+  expr <- conceptSet
+  if (is.list(conceptSet)) { # assuming this is a JSON parsed expression in a RJSONIO list 
+    expr <- RJSONIO::toJSON(conceptSet)
+  } 
   
-  markdown <- renderer$renderConceptSet(conceptSet)
+  markdown <- renderer$renderConceptSet(expr)
   
   return(markdown)
 }
