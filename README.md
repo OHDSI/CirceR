@@ -1,7 +1,7 @@
 CirceR
 ======
 
-[![Build Status](https://travis-ci.org/OHDSI/CirceR.svg?branch=master)](https://travis-ci.org/OHDSI/CirceR)
+[![Build Status](https://github.com/OHDSI/CirceR/workflows/R-CMD-check/badge.svg)](https://github.com/OHDSI/CirceR/actions?query=workflow%3AR-CMD-check)
 [![codecov.io](https://codecov.io/github/OHDSI/CirceR/coverage.svg?branch=master)](https://codecov.io/github/OHDSI/CirceR?branch=master)
 
 CirceR is part of [HADES](https://ohdsi.github.io/Hades/).
@@ -51,11 +51,11 @@ CirceR is an R package wrapped around a Java library.
 
 System Requirements
 ===================
-Requires R (version 3.2.2 or higher). Installation on Windows requires [RTools](http://cran.r-project.org/bin/windows/Rtools/). CirceR require Java.
+Requires R (version 3.2.2 or higher). CirceR require Java.
 
 Getting Started
 ===============
-1. See the instructions [here](https://ohdsi.github.io/Hades/rSetup.html) for configuring your R environment, including RTools and Java.
+1. See the instructions [here](https://ohdsi.github.io/Hades/rSetup.html) for configuring your R environment, including Java.
 
 2. In R, use the following commands to download and install CirceR:
 
