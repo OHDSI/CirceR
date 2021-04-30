@@ -20,6 +20,14 @@ test_that("cohortSql is generated", {
   expect_true(nchar(cohortSql, keepNA=TRUE) > 0)
 })
 
+test_that("cohortSql is generated from raw JSON", {
+  cohortJson <- paste(readLines("resources/simpleCohort.json"),collapse="\n");
+  options <- createGenerateOptions(cohortId = 1, cdmSchema = "CDMSchema", targetTable = "cohort", resultSchema = "ResultSchema");
+  cohortSql <- buildCohortQuery(cohortJson, options);
+  
+  expect_true(nchar(cohortSql, keepNA=TRUE) > 0)
+})
+
 test_that("cohortSql is generated with statistics", {
   cohortJson <- paste(readLines("resources/simpleCohort.json"),collapse="\n");
   cohortExpressionObj <- cohortExpressionFromJson(cohortJson);
