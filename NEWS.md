@@ -1,3 +1,9 @@
+CirceR 1.1.0
+============
+
+Allows passing raw JSON to the buildCohortQuery() function.
+
+
 CirceR 1.0.0
 ============
 
