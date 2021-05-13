@@ -1,3 +1,16 @@
+CirceR 1.1.1
+============
+
+Bug Fixes:
+- Updated to Circe v1.6.4 to incorporate new fixes.
+
+CirceR 1.1.0
+============
+
+New Features:
+- Allows passing raw JSON to the buildCohortQuery() function.
+
+
 CirceR 1.0.0
 ============
 
