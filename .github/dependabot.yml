@@ -10,7 +10,3 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "develop"
-registries:
-    maven-artifactory:
-        type: maven-repository
-        url: https://repo.ohdsi.org/nexus/content/groups/public
