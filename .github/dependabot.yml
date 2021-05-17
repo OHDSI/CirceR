@@ -12,5 +12,5 @@ updates:
     target-branch: "develop"
 registries:
     maven-artifactory:
-    type: maven-repository
-    url: https://repo.ohdsi.org/nexus/content/groups/public
+        type: maven-repository
+        url: https://repo.ohdsi.org/nexus/content/groups/public
