@@ -2,7 +2,7 @@ CirceR
 ======
 
 [![Build Status](https://github.com/OHDSI/CirceR/workflows/R-CMD-check/badge.svg)](https://github.com/OHDSI/CirceR/actions?query=workflow%3AR-CMD-check)
-[![codecov.io](https://codecov.io/github/OHDSI/CirceR/coverage.svg?branch=master)](https://codecov.io/github/OHDSI/CirceR?branch=master)
+[![codecov.io](https://codecov.io/github/OHDSI/CirceR/coverage.svg?branch=main)](https://codecov.io/github/OHDSI/CirceR?branch=main)
 
 CirceR is part of [HADES](https://ohdsi.github.io/Hades/).
 
@@ -68,7 +68,7 @@ User Documentation
 ==================
 The documentation website can be found at [http://ohdsi.github.io/CirceR/](http://ohdsi.github.io/CirceR/). A PDF version of the package manual is here:
 
-* Package manual: [CirceR manual](https://raw.githubusercontent.com/OHDSI/CirceR/master/extras/CirceR.pdf) 
+* Package manual: [CirceR manual](https://raw.githubusercontent.com/OHDSI/CirceR/main/extras/CirceR.pdf) 
 
 
 Support
