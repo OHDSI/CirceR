@@ -6,7 +6,7 @@
 \alias{CirceR-package}
 \title{CirceR: An R Wrapper for CIRCE}
 \description{
-An R wrapper around the CIRCE Java library, allowing cohort definition expressions to be edited, and converted to JSON or SQL.
+An R wrapper around the CIRCE Java library, allowing cohort definition expressions to be edited, and converted to Markdown or SQL.
 }
 \seealso{
 Useful links:
