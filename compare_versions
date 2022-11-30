@@ -9,7 +9,7 @@ $r_major = $1;
 $r_minor = $2;
 $r_mod = $3;
 
-open(GIT_VERSION, "git describe --tags |");
+open(GIT_VERSION, "git describe --tags --abbrev=0 |");
 $git = <GIT_VERSION>;
 close(GIT_VERSION);
 
