@@ -1,8 +1,8 @@
 Package: CirceR
 Type: Package
 Title: An R Wrapper for CIRCE
-Version: 1.2.0
-Date: 2021-02-23
+Version: 1.2.1
+Date: 2023-01-13
 Authors@R: c(
     person("Chris", "Knoll", , "cknoll@ohdsi.org", role = c("aut", "cre")),
     person("Martijn", "Schuemie", role = c("aut"))
@@ -24,6 +24,6 @@ Suggests:
     knitr,
     rmarkdown
 NeedsCompilation: no
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Language: en-US
 Encoding: UTF-8

@@ -4,7 +4,9 @@
 \name{cohortDefinitionJson}
 \alias{cohortDefinitionJson}
 \title{An example cohort definition}
-\format{A character vector containing a JSON string}
+\format{
+A character vector containing a JSON string
+}
 \usage{
 data(cohortDefinitionJson)
 }
