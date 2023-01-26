@@ -1,3 +1,8 @@
+CirceR 1.3.0
+============
+
+Introduced new function buildConceptSetQuery() and conceptSetExpressionFromJson to generate concept set queries from a concept set expression.
+
 CirceR 1.2.1
 ============
 

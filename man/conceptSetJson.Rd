@@ -4,7 +4,9 @@
 \name{conceptSetJson}
 \alias{conceptSetJson}
 \title{An example concept set}
-\format{A character vector containing a JSON string}
+\format{
+A character vector containing a JSON string
+}
 \usage{
 data(conceptSetJson)
 }
