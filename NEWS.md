@@ -1,3 +1,14 @@
+CirceR 1.2.1
+============
+
+Updated to Circe v1.10.1
+
+CirceR 1.2.0
+============
+
+Updated to Circe v1.10.0
+
+
 CirceR 1.1.1
 ============
 
