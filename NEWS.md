@@ -1,3 +1,8 @@
+CirceR 1.3.1
+============
+
+Updated Circe to 1.11.1, which includes sql query performance update.
+
 CirceR 1.3.0
 ============
 
