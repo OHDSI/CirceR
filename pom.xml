@@ -8,7 +8,7 @@
   <artifactId>circe-r</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
-    <circe.version>1.10.1</circe.version>    
+    <circe.version>1.11.1</circe.version>    
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -30,7 +30,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.3.1</version>
         <configuration>
           <filesets>
             <fileset>

@@ -1,3 +1,10 @@
+CirceR 1.3.1
+============
+
+Update circe to v1.11.1
+Update maven-clean-plugin from 3.1.0 to 3.3.1
+
+
 CirceR 1.3.0
 ============
 
