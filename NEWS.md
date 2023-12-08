@@ -1,3 +1,9 @@
+CirceR 1.3.2
+============
+
+Update circe to v1.11.2
+Update Site documentation.
+
 CirceR 1.3.1
 ============
 

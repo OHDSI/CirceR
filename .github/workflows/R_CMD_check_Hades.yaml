@@ -72,6 +72,11 @@ jobs:
       - name: Install system dependencies
         if: runner.os == 'Linux'
         run: |
+          sudo apt-get install -y make
+          sudo apt-get install -y default-jdk
+          sudo apt-get install -y libcurl4-openssl-dev
+          sudo apt-get install -y libssl-dev
+          sudo apt-get install -y libglpk-dev        
           while read -r cmd
           do
             eval sudo $cmd
