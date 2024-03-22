@@ -1,3 +1,11 @@
+CirceR 1.3.3
+============
+
+Update circe to v1.11.2
+Update Site documentation.
+Make codebase CRAN-compliant.
+
+
 CirceR 1.3.2
 ============
 
