@@ -18,3 +18,4 @@
 .github
 deploy.sh
 compare_versions
+cran-comments.md
