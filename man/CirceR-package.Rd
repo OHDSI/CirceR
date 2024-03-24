@@ -11,9 +11,9 @@ An R wrapper around the CIRCE Java library, allowing cohort definition expressio
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://ohdsi.github.io/CirceR}
-  \item \url{https://github.com/OHDSI/CirceR}
-  \item Report bugs at \url{https://github.com/OHDSI/CirceR/issues}
+  \item \url{https://ohdsi.github.io/CirceR/}
+  \item \url{https://github.com/OHDSI/CirceR/}
+  \item Report bugs at \url{https://github.com/OHDSI/CirceR/issues/}
 }
 
 }
