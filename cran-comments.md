@@ -11,3 +11,7 @@ This update includes modifications to conform to CRAN submission.
 ## R CMD check results
 
 There were no ERRORs or WARNINGs. 
+
+THe prior submission had NOTEs: the URLS were updated to remove the redirection, 
+and a java folder was added with instructions on finding source code for the .JARs
+

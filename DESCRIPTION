@@ -10,7 +10,6 @@ Authors@R: c(
 Maintainer: Chris Knoll <cknoll@ohdsi.org>
 Description: An R wrapper around the CIRCE Java library, allowing cohort definition expressions to be edited, and converted to Markdown or SQL.
 License: Apache License 2.0
-VignetteBuilder: knitr
 URL: https://ohdsi.github.io/CirceR/, https://github.com/OHDSI/CirceR/
 BugReports: https://github.com/OHDSI/CirceR/issues/
 SystemRequirements: Java (>= 8)
