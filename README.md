@@ -2,13 +2,13 @@ CirceR
 ======
 
 [![Build Status](https://github.com/OHDSI/CirceR/workflows/R-CMD-check/badge.svg)](https://github.com/OHDSI/CirceR/actions?query=workflow%3AR-CMD-check)
-[![codecov.io](https://codecov.io/github/OHDSI/CirceR/coverage.svg?branch=main)](https://codecov.io/github/OHDSI/CirceR?branch=main)
+[![codecov.io](https://codecov.io/github/OHDSI/CirceR/coverage.svg?branch=main)](https://app.codecov.io/github/OHDSI/CirceR?branch=main)
 
 CirceR is part of [HADES](https://ohdsi.github.io/Hades/).
 
 Introduction
 ============
-A R-wrapper for [Circe](https://www.github.com/OHDSI/circe-be), a library for creating queries for the OMOP Common Data Model. These queries are used in cohort definitions (CohortExpression) as well as custom features (CriteriaFeature). This package provides convenient wrappers for Circe functions, and includes the necessary Java dependencies.
+A R-wrapper for [Circe](https://github.com/OHDSI/circe-be), a library for creating queries for the OMOP Common Data Model. These queries are used in cohort definitions (CohortExpression) as well as custom features (CriteriaFeature). This package provides convenient wrappers for Circe functions, and includes the necessary Java dependencies.
 
 Features
 ========
@@ -66,7 +66,7 @@ Getting Started
 
 User Documentation
 ==================
-The documentation website can be found at [http://ohdsi.github.io/CirceR/](http://ohdsi.github.io/CirceR/). A PDF version of the package manual is here:
+The documentation website can be found at [https://ohdsi.github.io/CirceR/](https://ohdsi.github.io/CirceR/). A PDF version of the package manual is here:
 
 * Package manual: [CirceR manual](https://raw.githubusercontent.com/OHDSI/CirceR/main/extras/CirceR.pdf) 
 
