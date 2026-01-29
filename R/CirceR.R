@@ -25,6 +25,17 @@ NULL
   if (requireNamespace("rJava", quietly = TRUE)) {
     tryCatch({
       rJava::.jpackage(pkgname, lib.loc = libname)
+      
+      # In development mode (e.g. using devtools::load_all), 
+      # .jpackage may fail to find the JARs in inst/java.
+      # We explicitly add them if they exist in that location.
+      jar_dir <- system.file("java", package = pkgname)
+      if (jar_dir != "") {
+        jars <- list.files(jar_dir, pattern = "\\.jar$", full.names = TRUE)
+        if (length(jars) > 0) {
+          rJava::.jaddClassPath(jars)
+        }
+      }
     }, error = function(e) {
       warning("CirceR: Java backend could not be initialized: ", e$message)
     })

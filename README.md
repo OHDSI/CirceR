@@ -64,6 +64,31 @@ Getting Started
   remotes::install_github("ohdsi/CirceR")
   ```
 
+Python Backend Support (Optional)
+=================================
+CirceR has optional support for using a Python backend (`circepy`) instead of Java. This is useful in environments where Java is not available or difficult to configure.
+
+Requirements:
+1.  `reticulate` R package.
+2.  `ohdsi-circe-python-alpha` Python package.
+
+Installation:
+```r
+# Install packages
+install.packages("reticulate")
+# Install the python package via pip
+reticulate::py_install("ohdsi-circe-python-alpha", pip = TRUE)
+```
+
+Usage:
+Enable the Python backend in your R session:
+```r
+library(CirceR)
+CirceR::enablePythonBackend()
+
+# Proceed with normal CirceR usage
+```
+
 User Documentation
 ==================
 The documentation website can be found at [https://ohdsi.github.io/CirceR/](https://ohdsi.github.io/CirceR/). A PDF version of the package manual is here:

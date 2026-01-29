@@ -52,3 +52,17 @@ ensureJavaBackend <- function() {
     stop("Java backend is not working. Please fix Java configuration or use enablePythonBackend(). Error: ", e$message)
   })
 }
+
+#' Get the backend implementation
+#' 
+#' @return 
+#' An object with class 'circe_backend_python' or 'circe_backend_java'.
+#' 
+#' @keywords internal
+.get_backend <- function() {
+  if (usePythonBackend()) {
+    return(structure(list(), class = "circe_backend_python"))
+  } else {
+    return(structure(list(), class = "circe_backend_java"))
+  }
+}

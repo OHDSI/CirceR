@@ -29,6 +29,11 @@
 #' 
 #' @export
 cohortPrintFriendly <- function(expression) {
+  UseMethod("cohortPrintFriendly", .get_backend())
+}
+
+#' @export
+cohortPrintFriendly.circe_backend_java <- function(expression) {
   ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- expression
@@ -39,6 +44,13 @@ cohortPrintFriendly <- function(expression) {
   markdown <- renderer$renderCohort(expr)
 
   return(markdown)
+}
+
+#' @export
+cohortPrintFriendly.circe_backend_python <- function(expression) {
+  circe <- ensurePythonBackend()
+  # In Python, cohort_print_friendly handles both CohortExpression objects and JSON strings
+  return(circe$cohort_print_friendly(expression))
 }
 
 #' Render conceptSet array for print-friendly
@@ -54,6 +66,11 @@ cohortPrintFriendly <- function(expression) {
 #' 
 #' @export
 conceptSetListPrintFriendly <- function(conceptSetList) {
+  UseMethod("conceptSetListPrintFriendly", .get_backend())
+}
+
+#' @export
+conceptSetListPrintFriendly.circe_backend_java <- function(conceptSetList) {
   ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
 
@@ -74,6 +91,19 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
   return(markdown)
 }
 
+#' @export
+conceptSetListPrintFriendly.circe_backend_python <- function(conceptSetList) {
+  circe <- ensurePythonBackend()
+  renderer <- circe$MarkdownRender()
+  
+  if (is.list(conceptSetList) && !is.character(conceptSetList)) {
+    # If it's an R list, convert to JSON for the Python side to handle uniformly
+    conceptSetList <- RJSONIO::toJSON(conceptSetList)
+  }
+  
+  return(renderer$render_concept_set_list(conceptSetList))
+}
+
 #' Render conceptSet array for print-friendly
 #' 
 #' @description 
@@ -87,6 +117,11 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
 #' 
 #' @export
 conceptSetPrintFriendly <- function(conceptSet) {
+  UseMethod("conceptSetPrintFriendly", .get_backend())
+}
+
+#' @export
+conceptSetPrintFriendly.circe_backend_java <- function(conceptSet) {
   ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- conceptSet
@@ -97,5 +132,17 @@ conceptSetPrintFriendly <- function(conceptSet) {
   markdown <- renderer$renderConceptSet(expr)
   
   return(markdown)
+}
+
+#' @export
+conceptSetPrintFriendly.circe_backend_python <- function(conceptSet) {
+  circe <- ensurePythonBackend()
+  renderer <- circe$MarkdownRender()
+  
+  if (is.list(conceptSet) && !is.character(conceptSet)) {
+    conceptSet <- RJSONIO::toJSON(conceptSet)
+  }
+  
+  return(renderer$render_concept_set(conceptSet))
 }
 
