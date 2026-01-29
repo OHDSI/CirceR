@@ -55,6 +55,13 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: pip install ohdsi-circe-python-alpha
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
