@@ -34,9 +34,28 @@
 #' 
 #' @export
 createGenerateOptions <- function(cohortIdFieldName, cohortId, cdmSchema, targetTable, resultSchema, vocabularySchema, generateStats) {
+  UseMethod("createGenerateOptions", .get_backend())
+}
+
+#' @export
+createGenerateOptions.circe_backend_java <- function(cohortIdFieldName, cohortId, cdmSchema, targetTable, resultSchema, vocabularySchema, generateStats) {
+  ensureJavaBackend()
   options <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpressionQueryBuilder$BuildExpressionQueryOptions"))
   if (!missing(cohortIdFieldName)) options$cohortIdFieldName <- cohortIdFieldName
   if (!missing(cohortId)) options$cohortId <- rJava::.jnew("java/lang/Integer", as.integer(cohortId))
+  if (!missing(cdmSchema)) options$cdmSchema <- cdmSchema
+  if (!missing(targetTable)) options$targetTable <- targetTable
+  if (!missing(resultSchema)) options$resultSchema <- resultSchema
+  if (!missing(vocabularySchema)) options$vocabularySchema <- vocabularySchema
+  if (!missing(generateStats)) options$generateStats <- generateStats
+  return(options)
+}
+
+#' @export
+createGenerateOptions.circe_backend_python <- function(cohortIdFieldName, cohortId, cdmSchema, targetTable, resultSchema, vocabularySchema, generateStats) {
+  options <- list()
+  if (!missing(cohortIdFieldName)) options$cohortIdFieldName <- cohortIdFieldName
+  if (!missing(cohortId)) options$cohortId <- as.integer(cohortId)
   if (!missing(cdmSchema)) options$cdmSchema <- cdmSchema
   if (!missing(targetTable)) options$targetTable <- targetTable
   if (!missing(resultSchema)) options$resultSchema <- resultSchema
@@ -58,10 +77,22 @@ createGenerateOptions <- function(cohortIdFieldName, cohortId, cdmSchema, target
 #' 
 #' @export
 buildCohortQuery <- function(expression, options) {
+  UseMethod("buildCohortQuery", .get_backend())
+}
+
+#' @export
+buildCohortQuery.circe_backend_java <- function(expression, options) {
+  ensureJavaBackend()
   cohortQueryBuilder <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpressionQueryBuilder"))
   
   # expression can be a org.ohdsi.circe.cohortdefinition.CohortExpression or a String (it’s an overload method):
   sql <- cohortQueryBuilder$buildExpressionQuery(expression, options)
   
   return(sql)
+}
+
+#' @export
+buildCohortQuery.circe_backend_python <- function(expression, options) {
+  circe <- ensurePythonBackend()
+  return(circe$build_cohort_query(expression, options))
 }

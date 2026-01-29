@@ -22,7 +22,7 @@ jobs:
         config:
           - {os: windows-latest, r: 'release'}  # Does not appear to have Java 32-bit, hence the --no-multiarch
           - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/jammy/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -54,6 +54,13 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: pip install ohdsi-circe-python-alpha
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
@@ -80,7 +87,7 @@ jobs:
           while read -r cmd
           do
             eval sudo $cmd
-          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "22.04"))')
           
       - name: Install libssh
         if: runner.os == 'Linux'
@@ -112,14 +119,14 @@ jobs:
 
       - name: Upload check results
         if: failure()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
           
       - name: Upload source package
         if: success() && runner.os == 'macOS' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: package_tarball
           path: check/*.tar.gz
@@ -130,7 +137,7 @@ jobs:
         shell: Rscript {0}
 
   Release:
-    needs: R-CMD-Check
+    needs: R-CMD-check
     
     runs-on: macOS-latest
     
@@ -183,7 +190,7 @@ jobs:
           
       - name: Download package tarball
         if: ${{ env.new_version != '' }}
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: package_tarball    
           
