@@ -28,6 +28,10 @@
 #' 
 #' @export
 conceptSetExpressionFromJson <- function(expressionJson) {
+  if (usePythonBackend()) {
+    return(expressionJson)
+  }
+  ensureJavaBackend()
   conceptSetExpressionObj <- rJava::new(Class = rJava::J("org.ohdsi.circe.vocabulary.ConceptSetExpression"))
   return(conceptSetExpressionObj$fromJson(expressionJson))
 }

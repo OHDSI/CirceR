@@ -28,6 +28,14 @@
 #' 
 #' @export
 buildConceptSetQuery <- function(conceptSetJSON) {
+  if (usePythonBackend()) {
+    if(!(inherits(conceptSetJSON,"character") && length(conceptSetJSON) == 1 && nchar(conceptSetJSON) > 0)) {
+       stop("conceptSetJSON must be a single non-zero length string.")
+     }
+     circe <- ensurePythonBackend()
+     return(circe$build_concept_set_query(conceptSetJSON))
+  }
+  ensureJavaBackend()
   if(inherits(conceptSetJSON,"character") && length(conceptSetJSON) == 1 && nchar(conceptSetJSON) > 0) {
     conceptSetQueryBuilder <- rJava::new(Class = rJava::J("org.ohdsi.circe.vocabulary.ConceptSetExpressionQueryBuilder"))
     return(conceptSetQueryBuilder$buildExpressionQuery(conceptSetExpressionFromJson(conceptSetJSON)))

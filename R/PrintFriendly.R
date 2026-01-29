@@ -29,6 +29,7 @@
 #' 
 #' @export
 cohortPrintFriendly <- function(expression) {
+  ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- expression
   if (is.list(expression)) { # assuming this is a JSON parsed expression in a RJSONIO list 
@@ -53,6 +54,7 @@ cohortPrintFriendly <- function(expression) {
 #' 
 #' @export
 conceptSetListPrintFriendly <- function(conceptSetList) {
+  ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
 
   if (is.character(conceptSetList)) {
@@ -85,6 +87,7 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
 #' 
 #' @export
 conceptSetPrintFriendly <- function(conceptSet) {
+  ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- conceptSet
   if (is.list(conceptSet)) { # assuming this is a JSON parsed expression in a RJSONIO list 

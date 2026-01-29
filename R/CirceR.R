@@ -22,5 +22,11 @@
 NULL
 
 .onLoad <- function(libname, pkgname) {
-  rJava::.jpackage(pkgname, lib.loc = libname)
+  if (requireNamespace("rJava", quietly = TRUE)) {
+    tryCatch({
+      rJava::.jpackage(pkgname, lib.loc = libname)
+    }, error = function(e) {
+      warning("CirceR: Java backend could not be initialized: ", e$message)
+    })
+  }
 }

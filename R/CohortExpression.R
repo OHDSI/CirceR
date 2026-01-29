@@ -28,6 +28,10 @@
 #' 
 #' @export
 cohortExpressionFromJson <- function(expressionJson) {
+  if (usePythonBackend()) {
+    return(expressionJson)
+  }
+  ensureJavaBackend()
   cohortExpressionObj <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpression"))
   return(cohortExpressionObj$fromJson(expressionJson))
 }
