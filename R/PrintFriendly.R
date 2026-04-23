@@ -32,7 +32,7 @@ cohortPrintFriendly <- function(expression) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- expression
   if (is.list(expression)) { # assuming this is a JSON parsed expression in a RJSONIO list 
-    expr <- RJSONIO::toJSON(expression)
+    expr <- RJSONIO::toJSON(expression, digits=10)
   } 
   # expression can be a org.ohdsi.circe.cohortdefinition.CohortExpression or a String (it’s an overload method):
   markdown <- renderer$renderCohort(expr)
@@ -88,8 +88,8 @@ conceptSetPrintFriendly <- function(conceptSet) {
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- conceptSet
   if (is.list(conceptSet)) { # assuming this is a JSON parsed expression in a RJSONIO list 
-    expr <- RJSONIO::toJSON(conceptSet)
-  } 
+    expr <- RJSONIO::toJSON(conceptSet, digits=10)
+  }
   
   markdown <- renderer$renderConceptSet(expr)
   
