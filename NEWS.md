@@ -1,3 +1,10 @@
+CirceR 1.3.4
+============
+
+update circe to v1.13.0
+Fix digit precision when converting toJSON in RJSONIO.
+
+
 CirceR 1.3.3
 ============
 
