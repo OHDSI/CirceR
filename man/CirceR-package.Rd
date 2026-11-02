@@ -22,6 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Chris Knoll \email{cknoll@ohdsi.org}
   \item Martijn Schuemie
 }
 

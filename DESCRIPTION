@@ -26,6 +26,6 @@ Suggests:
     rmarkdown,
     reticulate
 NeedsCompilation: no
-RoxygenNote: 7.3.3
 Language: en-US
 Encoding: UTF-8
+Config/roxygen2/version: 8.0.0
