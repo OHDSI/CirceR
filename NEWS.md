@@ -1,3 +1,8 @@
+CirceR 1.3.3.9000
+============
+
+Update bundled circe to v1.14.2 (adds Episode criteria for CDM 5.4).
+
 CirceR 1.3.3
 ============
 
