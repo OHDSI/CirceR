@@ -6,7 +6,7 @@
 \alias{CirceR-package}
 \title{CirceR: Construct Cohort Inclusion and Restriction Criteria Expressions}
 \description{
-Wraps the 'CIRCE' (\url{https://github.com/ohdsi/circe-be}) 'Java' library allowing cohort definition expressions to be edited, and converted to 'Markdown' or 'SQL'.
+Wraps the 'CIRCE' (\url{https://github.com/ohdsi/circe-be}) 'Java' library allowing cohort definition expressions to be edited and converted to 'Markdown' or 'SQL'.
 }
 \seealso{
 Useful links:
