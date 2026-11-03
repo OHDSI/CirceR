@@ -29,6 +29,12 @@
 #' 
 #' @export
 cohortPrintFriendly <- function(expression) {
+  UseMethod("cohortPrintFriendly", .get_backend())
+}
+
+#' @export
+cohortPrintFriendly.circe_backend_java <- function(expression) {
+  ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- expression
   if (is.list(expression)) { # assuming this is a JSON parsed expression in a RJSONIO list 
@@ -38,6 +44,18 @@ cohortPrintFriendly <- function(expression) {
   markdown <- renderer$renderCohort(expr)
 
   return(markdown)
+}
+
+#' @export
+cohortPrintFriendly.circe_backend_python <- function(expression) {
+  circe <- ensurePythonBackend()
+  if (is.list(expression) && !inherits(expression, "python.builtin.object")) {
+    expression <- RJSONIO::toJSON(expression)
+  }
+  if (is.character(expression)) {
+    expression <- circe$cohort_expression_from_json(expression)
+  }
+  return(circe$cohort_print_friendly(expression))
 }
 
 #' Render conceptSet array for print-friendly
@@ -53,6 +71,12 @@ cohortPrintFriendly <- function(expression) {
 #' 
 #' @export
 conceptSetListPrintFriendly <- function(conceptSetList) {
+  UseMethod("conceptSetListPrintFriendly", .get_backend())
+}
+
+#' @export
+conceptSetListPrintFriendly.circe_backend_java <- function(conceptSetList) {
+  ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
 
   if (is.character(conceptSetList)) {
@@ -72,6 +96,19 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
   return(markdown)
 }
 
+#' @export
+conceptSetListPrintFriendly.circe_backend_python <- function(conceptSetList) {
+  circe <- ensurePythonBackend()
+  renderer <- circe$cohortdefinition$MarkdownRender()
+  
+  if (is.list(conceptSetList) && !is.character(conceptSetList)) {
+    # If it's an R list, convert to JSON for the Python side to handle uniformly
+    conceptSetList <- RJSONIO::toJSON(conceptSetList)
+  }
+  
+  return(renderer$render_concept_set_list(conceptSetList))
+}
+
 #' Render conceptSet array for print-friendly
 #' 
 #' @description 
@@ -85,6 +122,12 @@ conceptSetListPrintFriendly <- function(conceptSetList) {
 #' 
 #' @export
 conceptSetPrintFriendly <- function(conceptSet) {
+  UseMethod("conceptSetPrintFriendly", .get_backend())
+}
+
+#' @export
+conceptSetPrintFriendly.circe_backend_java <- function(conceptSet) {
+  ensureJavaBackend()
   renderer <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.printfriendly.MarkdownRender"))
   expr <- conceptSet
   if (is.list(conceptSet)) { # assuming this is a JSON parsed expression in a RJSONIO list 
@@ -94,5 +137,17 @@ conceptSetPrintFriendly <- function(conceptSet) {
   markdown <- renderer$renderConceptSet(expr)
   
   return(markdown)
+}
+
+#' @export
+conceptSetPrintFriendly.circe_backend_python <- function(conceptSet) {
+  circe <- ensurePythonBackend()
+  renderer <- circe$cohortdefinition$MarkdownRender()
+  
+  if (is.list(conceptSet) && !is.character(conceptSet)) {
+    conceptSet <- RJSONIO::toJSON(conceptSet)
+  }
+  
+  return(renderer$render_concept_set(conceptSet))
 }
 

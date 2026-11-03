@@ -5,5 +5,9 @@ test_that("ConceptsetSqlBuilder works", {
   expect_true(nchar(query) > 0)
   
   expect_error(CirceR::buildConceptSetQuery(""), "conceptSetJSON must be a single non-zero length string.")
-  expect_error(CirceR::buildConceptSetQuery("{}"), "java.lang.NullPointerException")
+  if (usePythonBackend()) {
+    expect_error(CirceR::buildConceptSetQuery("{}"), "items")
+  } else {
+    expect_error(CirceR::buildConceptSetQuery("{}"), "java.lang.NullPointerException")
+  }
 })

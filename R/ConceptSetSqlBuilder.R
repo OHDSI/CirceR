@@ -28,10 +28,30 @@
 #' 
 #' @export
 buildConceptSetQuery <- function(conceptSetJSON) {
+  UseMethod("buildConceptSetQuery", .get_backend())
+}
+
+#' @export
+buildConceptSetQuery.circe_backend_java <- function(conceptSetJSON) {
+  ensureJavaBackend()
   if(inherits(conceptSetJSON,"character") && length(conceptSetJSON) == 1 && nchar(conceptSetJSON) > 0) {
     conceptSetQueryBuilder <- rJava::new(Class = rJava::J("org.ohdsi.circe.vocabulary.ConceptSetExpressionQueryBuilder"))
     return(conceptSetQueryBuilder$buildExpressionQuery(conceptSetExpressionFromJson(conceptSetJSON)))
   } else {
     stop("conceptSetJSON must be a single non-zero length string.")
   }
+}
+
+#' @export
+buildConceptSetQuery.circe_backend_python <- function(conceptSetJSON) {
+  if(!(inherits(conceptSetJSON,"character") && length(conceptSetJSON) == 1 && nchar(conceptSetJSON) > 0)) {
+     stop("conceptSetJSON must be a single non-zero length string.")
+   }
+   circe <- ensurePythonBackend()
+   builder <- circe$vocabulary$concept_set_expression_query_builder$ConceptSetExpressionQueryBuilder()
+   expression <- conceptSetExpressionFromJson(conceptSetJSON)
+   if (is.null(expression$items)) {
+     stop("conceptSetJSON must contain an 'items' array.")
+   }
+   return(builder$build_expression_query(expression))
 }

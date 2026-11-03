@@ -28,6 +28,21 @@
 #' 
 #' @export
 cohortExpressionFromJson <- function(expressionJson) {
+  UseMethod("cohortExpressionFromJson", .get_backend())
+}
+
+#' @export
+cohortExpressionFromJson.circe_backend_java <- function(expressionJson) {
+  ensureJavaBackend()
   cohortExpressionObj <- rJava::new(Class = rJava::J("org.ohdsi.circe.cohortdefinition.CohortExpression"))
   return(cohortExpressionObj$fromJson(expressionJson))
+}
+
+#' @export
+cohortExpressionFromJson.circe_backend_python <- function(expressionJson) {
+  circe <- ensurePythonBackend()
+  # Validate with circe, but return an R list so Java-style access such as
+  # `$conceptSets` keeps working for callers that inspect the expression.
+  circe$cohort_expression_from_json(expressionJson)
+  return(RJSONIO::fromJSON(expressionJson))
 }

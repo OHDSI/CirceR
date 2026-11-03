@@ -1,3 +1,9 @@
+CirceR 1.4.0
+============
+
+Update bundled circe to v1.14.2 (adds Episode criteria for CDM 5.4).
+Use circepy as drop in replacement on systems without java
+
 CirceR 1.3.3
 ============
 
